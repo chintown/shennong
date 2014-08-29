@@ -1,6 +1,6 @@
-#Shennong — inspecting language behaviors by yourself
+#Shennong — inspecting (PHP) language behaviors by yourself
 
-[Shennong](http://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Shinno_%28Shennong%29_derivative.jpg/330px-Shinno_%28Shennong%29_derivative.jpg)
+![Shennong](http://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Shinno_%28Shennong%29_derivative.jpg/330px-Shinno_%28Shennong%29_derivative.jpg)
 
 > Shennong was a Chinese culture hero who tasted various herbs to discover their qualities.
 

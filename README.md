@@ -32,7 +32,7 @@ Say, I want to check the reaction of **Fool** and **Wise** when they meet **trut
 	$shennong = new Shennong('truth');
 	```
 	
-2. Add *Fool* and *Wise* testers
+2. Add **Fool** and **Wise** testers
 
 	
 	```php	

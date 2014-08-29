@@ -1,7 +1,7 @@
 <?php
 require './common/TrueFalseShennong.php';
 
-$testing_var;
+$testing_var; // without initialization
 
 $shennong = new TrueFalseShennong('null_empty_util');
 $shennong->addTesters('isset', function($input) {return isset($input);});
@@ -17,7 +17,7 @@ $shennong->addTestInputs(array(
     "0",
     0,
     0.0,
-    $var,
+    $testing_var,
     "\0"
 ));
 $shennong->taste();

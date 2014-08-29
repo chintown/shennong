@@ -73,6 +73,7 @@ class Shennong {
      */
     public function jotDownResult() {
         ob_start();
+
 ?>
     <table border="1">
         <tr>
@@ -95,6 +96,7 @@ class Shennong {
             }
         ?>
     </table>
+    <p>PHP version: <?=phpversion();?></p>
 <?php
         $output = ob_get_contents();
         ob_end_clean();

@@ -18,7 +18,7 @@ $shennong->addTestInputs(array(
     0,
     0.0,
     $testing_var,
-    "\0"
+    chr(0)
 ));
 $shennong->taste();
 $shennong->jotDownResult();

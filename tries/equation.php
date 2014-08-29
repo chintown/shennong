@@ -15,7 +15,7 @@ $test_cases = array(
     Null,
     "foobar",
     "4779",
-    "\x12AB",
+    "0x12AB",
     ""
 );
 

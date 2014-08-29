@@ -18,7 +18,7 @@ In the past, Shennong must to taste the hrebs by himself. Now, the digital shenn
 
 Shennong will loop through each test inputs and feeds it to all the tester one by one.
 
-Keeping the testing result, Shennong can give you a simple HTML table for easy comparising. 
+Keeping the testing result, Shennong can give you a simple HTML table for comparison.
 
 *You can also add attributes to the dom result (by implementing `markLabel` method) and apply nice CSS styles on them.*
 

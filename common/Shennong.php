@@ -49,9 +49,9 @@ class Shennong {
             $outputs = array();
             foreach ($this->testers as $name => $executor) {
                 try {
-                    $outputs[$name] = $executor($input);
+                    $outputs[] = $executor($input);
                 } catch (Exception $e) {
-                    $outputs[$name] = '['.$e->getMessage().']';
+                    $outputs[] = '['.$e->getMessage().']';
                 }
             }
             $this->result[] = array(
@@ -74,34 +74,43 @@ class Shennong {
      * render result into html table stored in {$this->name}.html
      */
     public function jotDownResult() {
-        ob_start();
+        $head_row = array_merge(array("[{$this->name}]<br>test"), array_keys($this->testers));
+        $body_rows = array_map(function($row) {
+            return array_merge(array($row['test_input']), $row['test_outputs']);
+        }, $this->result);
 
+
+        ob_start();
 ?>
+    <style>td:nth-child(1) {font-family: monospace;}</style>
     <table border="1">
-        <tr>
-            <th>[<?=$this->name?>]<br>test</th>
-            <?php foreach($this->testers as $name=>$executor) {
-                echo "<th>$name</th>\n";
-            } ?>
-        </tr>
-        <?php
-            foreach($this->result as $row) {
-                $test_input_literal = var_export($row['test_input'], true);
-                echo "<tr>\n";
-                echo "<td>$test_input_literal</td>\n";
-                foreach($row['test_outputs'] as $column_result) {
-                    $result_literal = var_export($column_result, true);
-                    $label = $this->markLabel($column_result);
-                    echo "<td $label>$result_literal</td>\n";
-                }
-                echo "</tr>\n";
-            }
+        <?
+            echo "<tr>";
+            $lines = array_map(function($head) {
+                return "<th>$head</th>";
+            }, $head_row);
+            echo implode("\n", $lines);
+            echo "</tr>";
+        ?>
+
+        <?
+            $lines = array_map(function($row) {
+                $line_parts = array_map(function($column, $idx) {
+                    $literal = var_export($column, true);
+                    $label = $idx === 0 ? '' : $this->markLabel($column);
+                    return "<td $label>{$literal}</td>";
+                }, $row, array_keys($row));
+                return '<tr>'.implode("\n", $line_parts).'</tr>';
+            }, $body_rows);
+            echo implode("\n", $lines);
         ?>
     </table>
     <p>PHP version: <?=phpversion();?></p>
 <?php
         $output = ob_get_contents();
         ob_end_clean();
+
+
         file_put_contents('./output/'.$this->name.'.html', $output);
     }
 }

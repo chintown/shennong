@@ -17,9 +17,9 @@ class Shennong {
         $this->result = array();
     }
     /**
-     * add an user-defined executor which will
-     * exam the test cases one by one
-     * @param string   $name     display name shown on jotDownResult html table
+     * add an user-defined tester which will
+     * exam the test input one by one
+     * @param string   $name   display name shown on output html table
      * @param callable $tester testing unit
      */
     public function addTesters($name, callable $tester) {
@@ -41,7 +41,9 @@ class Shennong {
     public function addTestInputs($inputs) {
         $this->testInputs = array_merge($this->testInputs, $inputs);
     }
-
+    /**
+     * do test
+     */
     public function taste() {
         foreach ($this->testInputs as $input) {
             $outputs = array();
@@ -60,10 +62,10 @@ class Shennong {
     }
     /**
      * given a result value, client can decide
-     * what "label" should be attached to jotDownResult html
+     * what "label" should be attached to output html
      * so that visual styles can be easily applied on them
-     * @param  mixed $output executed result
-     * @return string         any html string which will be attached to dom element
+     * @param  mixed $output testing result
+     * @return string        any html string which will be attached to dom element
      */
     protected function markLabel($output) {
         return ''; // by default, do nothing

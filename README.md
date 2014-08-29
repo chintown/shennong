@@ -16,7 +16,7 @@ In the past, Shennong must to taste the hrebs by himself. Now, the digital shenn
 3. Give testing inputs.
 4. Taste them!
 
-Shennong will loop through each test inputs and feeds it to all the tester one by one.
+Shennong will loop through each test input and feeds it to all the tester one by one.
 
 Keeping the testing result, Shennong can give you a simple HTML table for comparison.
 
